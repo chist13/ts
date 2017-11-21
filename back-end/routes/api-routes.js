@@ -1,7 +1,23 @@
 const router = require('express').Router()
+const dummyData = require('../../mock')
 
-router.get('*', (req, res) => {
-	res.json({data: 'a lot of data'})
+router.get('/albums', (req, res) => {
+	const list = dummyData.map(e => ({id: e.id, name: e.name, img: e.img}))
+
+	res.json(list)
+});
+
+
+router.get('/album/:id/page/:page', (req, res) => {
+	const album = dummyData.find(e => e.id == req.params.id)
+
+	res.json(album)
+})
+
+router.get('/album/:id', (req, res) => {
+	const album = dummyData.find(e => e.id == req.params.id)
+
+	res.json(album)
 })
 
 module.exports = router
