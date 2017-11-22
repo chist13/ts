@@ -4,9 +4,10 @@ import promiseMiddleware from 'redux-promise-middleware'
 import logger from 'redux-logger'
 
 import albums from './modules/albums/reducer'
+import album from './modules/albumDetails/reducer'
 
 const reducers = combineReducers({
-	albums
+	albums, album
 })
 
 const initialState = {}

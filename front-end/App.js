@@ -1,16 +1,20 @@
 import React from 'react'
-import './App.sass'
 
-import Header from './components/Header'
-import Main from './components/Main'
+import { Switch, Route } from 'react-router-dom'
+import { Redirect } from 'react-router'
+
+import AlbumsPage from './pages/AlbumsPage/AlbumsPage'
+import AlbumDetailsPage from './pages/AlbumDetailsPage/AlbumDetailsPage'
 
 export default class App extends React.Component {
 	render() {
 		return (
-			<div className="panel">
-				<Header />
-				<Main />
-			</div>
+			<Switch>
+				<Route exact path='/' component={AlbumsPage} />
+				<Route path='/album/:id/page/:page' component={AlbumDetailsPage} />
+				<Route path='/album/:id' component={AlbumDetailsPage} />
+				<Redirect to='/' />
+			</Switch>
 		);
 	}
 }

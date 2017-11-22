@@ -1,0 +1,54 @@
+%flex-center
+	display: flex
+	justify-content: center
+	align-items: center
+
+.albums-wrap
+	display: flex
+	flex-direction: column
+	flex: 1
+	box-shadow: 0 0 12px 1px rgba(#000, .5)
+	background-color: #f8f8f8
+
+.albums
+	@extend %flex-center
+	flex: 1
+
+.albums-item
+	@extend %flex-center
+	list-style: none
+	height: 70px
+	width: 100%
+	border: 1px solid rgba(#000, .3)
+	background-color: #fff
+	cursor: pointer
+	margin: 3px 0
+	transition: box-shadow .3s
+	&__cover
+		height: 70px
+		width: 70px
+	&__name
+		margin-right: 10px
+		margin-left: 10px
+		font-size: 22px
+		text-transform: capitalize
+		flex: 1 0 auto
+	&__icon
+		transition: transform .3s
+		transition-delay: .2s
+
+	&:hover
+		box-shadow: 0 0 8px 1px rgba(#000, .4)
+		.albums-item__icon
+			transform: translateX(5px) scale(1.1)
+
+.albums-list
+	margin: 0
+	padding: 0
+	width: 300px
+	margin-bottom: auto
+
+.albums-heading
+	margin-top: 40px
+	color: rgba(#000, .8)
+	text-align: center

@@ -1,0 +1,44 @@
+.album
+	display: flex
+	flex-direction: column
+	flex: 1
+
+.album-heading
+	display: flex
+	justify-content: center
+	align-items: center
+	margin: 10px 0
+	&__title
+		text-transform: capitalize
+		margin: 0 10px
+	&__icon >*
+		transition: transform .3s
+	&__icon:hover >*
+		transform: translateX(-10px)
+	&__img
+		width: 50px
+		height: 50px
+		border-radius: 50%
+
+.image-list
+	flex: 1
+
+.image-item
+	margin-bottom: 10px
+
+.image-item__image
+	max-width: 100%
+	height: auto
+
+/**
+ * pagination part
+ */
+.album-pagination
+	display: flex
+	justify-content: center
+
+	&__link
+		margin: 20px
+		&.disabled
+			pointer-events: none
+			opacity: .6
