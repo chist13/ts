@@ -1,16 +1,25 @@
 import { connect } from 'react-redux'
 import React from 'react'
 
-import { mapStateToProps, mapDispatchToProps } from '../store/modules/albums/maps'
+import AlbumList from './AlbumList'
+import { requestAlbums } from '../store/modules/albums/actions'
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(({albums}) => ({
+	fetching: albums.fetching,
+	albums: albums.albums
+}))
 export default class AlbumListContainer extends React.Component {
 	componentWillMount() {
-		this.props.fetchAlbumsIfNeeded()
+		this.props.dispatch(requestAlbums())
+	}
+
+	onSelect(id) {
+		console.log(id)
 	}
 
 	render() {
-		console.log(this)
-		return <h1>AlbumListContainer</h1>
+		const { fetching, albums } = this.props
+
+		return <AlbumList loading={fetching} albums={albums} onSelect={this.onSelect.bind(this)}/>
 	}
 }

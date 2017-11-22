@@ -7,7 +7,6 @@ router.get('/albums', (req, res) => {
 	res.json(list)
 });
 
-
 router.get('/album/:id/page/:page', (req, res) => {
 	const album = dummyData.find(e => e.id == req.params.id)
 
@@ -18,6 +17,10 @@ router.get('/album/:id', (req, res) => {
 	const album = dummyData.find(e => e.id == req.params.id)
 
 	res.json(album)
+})
+
+router.all('*', (req, res) => {
+	res.status(404).send('not found')
 })
 
 module.exports = router
